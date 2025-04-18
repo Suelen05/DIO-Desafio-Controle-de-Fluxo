@@ -3,21 +3,22 @@ import java.util.Scanner;
 public class Contador {
     public static void main(String[] args) throws ParametrosInvalidosExeption {
         
-        Scanner scanner = new Scanner(System.in);
-    
-        System.out.println("Informe o primeiro parametro: ");
-        int parametro1 = scanner.nextInt();
-        System.out.println("Informe o segundo parametro: ");
-        int parametro2 = scanner.nextInt();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Informe o primeiro parametro: ");
+            int parametro1 = scanner.nextInt();
+            System.out.println("Informe o segundo parametro: ");
+            int parametro2 = scanner.nextInt();
 
-        try {
-            validarParametros(parametro1, parametro2);
+            try {
+                validarParametros(parametro1, parametro2);
 
-            contar(parametro2 - parametro1);
-    
-        } catch (ParametrosInvalidosExeption e) {
+                contar(parametro2 - parametro1);
+   
+            } catch (ParametrosInvalidosExeption e) {
 
-            System.out.println("O segundo parametro precisa ser maior que o primeiro parametro");
+                System.out.println("O segundo parametro precisa ser maior que o primeiro parametro");
+            }
+            scanner.close();
         }
 
 
